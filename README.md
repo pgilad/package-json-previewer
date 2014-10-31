@@ -1,4 +1,5 @@
 # package-json-previewer
+> Web interface to preview your normalized package.json or metadata using [normalize-package-data](https://github.com/npm/normalize-package-data)
 
 ## Install
 
