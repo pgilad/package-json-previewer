@@ -1,0 +1,23 @@
+{
+    "name": "package-json-previewer",
+    "version": "0.1.0",
+    "description": "Web interface to preview your normalized package.json or metadata using normalize-package-data",
+    "repository": "pgilad/package-json-previewer",
+    "license": "MIT",
+    "author": "Gilad Peleg <giladp007@gmail.com> (http://giladpeleg.com)",
+    "bin": "./bin/normalizer",
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "scripts": {
+        "test": "mocha"
+    },
+    "keywords": "coffee, npm, previewer, normalize, website, transform",
+    "man": "package.man",
+    "devDependencies": {
+        "browserify": "^6.2.0"
+    },
+    "dependencies": {
+        "normalize-package-data": "^1.0.3"
+    }
+}

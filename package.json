@@ -1,61 +1,57 @@
 {
-  "name": "package-json-previewer",
-  "version": "0.1.0",
-  "description": "Web interface to preview your normalized package.json or metadata using normalize-package-data",
-  "repository": "pgilad/package-json-previewer",
-  "private": true,
-  "license": "MIT",
-  "author": {
-    "name": "Gilad Peleg",
-    "email": "giladp007@gmail.com",
-    "url": "http://giladpeleg.com"
-  },
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "scripts": {
-    "test": "mocha --compilers coffee:coffee-script/register tests/test.coffee -R spec",
-    "watchTest": "mocha --compilers coffee:coffee-script/register tests/test.coffee -R spec -watch"
-  },
-  "keywords": [
-    "coffee",
-    "npm",
-    "previewer",
-    "normalize",
-    "website",
-    "transform"
-  ],
-  "devDependencies": {
-    "browserify": "^6.2.0",
-    "coffee-script": "^1.8.0",
-    "coffeeify": "^0.7.0",
-    "expect.js": "^0.3.1",
-    "express": "^4.10.1",
-    "gulp": "^3.5.0",
-    "gulp-compass": "^2.0.1",
-    "gulp-concat": "^2.4.1",
-    "gulp-debug": "^1.0.1",
-    "gulp-jade": "^0.9.0",
-    "gulp-livereload": "^2.1.1",
-    "gulp-load-plugins": "^0.7.1",
-    "gulp-minify-css": "^0.3.1",
-    "gulp-rename": "^1.2.0",
-    "gulp-sass": "^1.2.2",
-    "gulp-streamify": "0.0.5",
-    "gulp-stylus": "^1.3.3",
-    "gulp-uglify": "^1.0.1",
-    "gulp-util": "^3.0.1",
-    "merge-stream": "^0.1.6",
-    "mocha": "*",
-    "serve-static": "^1.7.0",
-    "tiny-lr": "^0.1.4",
-    "vinyl-source-stream": "^1.0.0",
-    "zombie": "^2.0.8"
-  },
-  "dependencies": {
-    "domready": "^1.0.7",
-    "lodash.clone": "^2.4.1",
-    "lodash.debounce": "^2.4.1",
-    "normalize-package-data": "^1.0.3"
-  }
+    "name": "package-json-previewer",
+    "version": "0.1.0",
+    "description": "Web interface to preview your normalized package.json or metadata using normalize-package-data",
+    "repository": "pgilad/package-json-previewer",
+    "private": true,
+    "license": "MIT",
+    "author": "Gilad Peleg <giladp007@gmail.com> (http://giladpeleg.com)",
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "scripts": {
+        "test": "mocha --compilers coffee:coffee-script/register tests/test.coffee -R spec",
+        "watchTest": "mocha --compilers coffee:coffee-script/register tests/test.coffee -R spec -watch"
+    },
+    "keywords": [
+        "coffee",
+        "npm",
+        "previewer",
+        "normalize",
+        "website",
+        "transform"
+    ],
+    "devDependencies": {
+        "browserify": "^6.2.0",
+        "coffee-script": "^1.8.0",
+        "coffeeify": "^0.7.0",
+        "expect.js": "^0.3.1",
+        "express": "^4.10.1",
+        "gulp": "^3.5.0",
+        "gulp-compass": "^2.0.1",
+        "gulp-concat": "^2.4.1",
+        "gulp-debug": "^1.0.1",
+        "gulp-jade": "^0.9.0",
+        "gulp-livereload": "^2.1.1",
+        "gulp-load-plugins": "^0.7.1",
+        "gulp-minify-css": "^0.3.1",
+        "gulp-rename": "^1.2.0",
+        "gulp-sass": "^1.2.2",
+        "gulp-streamify": "0.0.5",
+        "gulp-stylus": "^1.3.3",
+        "gulp-uglify": "^1.0.1",
+        "gulp-util": "^3.0.1",
+        "merge-stream": "^0.1.6",
+        "mocha": "*",
+        "serve-static": "^1.7.0",
+        "tiny-lr": "^0.1.4",
+        "vinyl-source-stream": "^1.0.0",
+        "zombie": "^2.0.8"
+    },
+    "dependencies": {
+        "domready": "^1.0.7",
+        "lodash.clone": "^2.4.1",
+        "lodash.debounce": "^2.4.1",
+        "normalize-package-data": "^1.0.3"
+    }
 }
