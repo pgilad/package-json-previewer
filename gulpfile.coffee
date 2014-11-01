@@ -8,20 +8,25 @@ $ = require("gulp-load-plugins")()
 browserify = require "browserify"
 express = require "express"
 source = require "vinyl-source-stream"
+mergeStream = require "merge-stream"
 tiny = require "tiny-lr"
 server = tiny()
 app = express()
 
-gulp.task "styles", ->
-  gulp.src "./src/stylesheets/*.styl"
-  .pipe $.stylus()
-  .on "error", handleError
-  .pipe gulp.dest "dist/stylesheets"
-  .pipe $.livereload server
-
 handleError = (error) ->
   $.util.log "Gulp error", error.message
   @emit "end"
+
+gulp.task "styles", ->
+  stylus = gulp.src "./src/stylesheets/*.styl"
+    .pipe $.stylus().on "error", handleError
+
+  external = gulp.src "./src/stylesheets/solarized-dark.min.css"
+
+  mergeStream(stylus, external)
+  .pipe $.concat "style.css"
+  .pipe gulp.dest "dist/stylesheets"
+  .pipe $.livereload server
 
 gulp.task "scripts", ->
   browserify

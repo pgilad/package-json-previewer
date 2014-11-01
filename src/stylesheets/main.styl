@@ -1,20 +1,57 @@
-body, * {
-  font-family: sans-serif;
-  background: #283772;
-}
-.container {
-  width: 400px;
-  height: auto;
-  border: 1px solid #ccc;
-  background: #fff;
-  * {
-    background: #fff;
-  }
-  box-shadow: 1px 1px 1px black;
-  border-radius: 3px;
-  margin: 0 auto;
-  padding: 35px;
-  h1 {
-    text-align: center;
-  }
-}
+*
+  box-sizing border-box
+  position relative
+  overflow hidden
+
+html, body, h1, h2, h3, h4, h5, h6, div, span, textarea, button
+  font-family: 'PT Serif', serif;
+
+html
+  height 100%
+  width 100%
+  background-color #073642
+  color #839496
+
+body
+  width 100%
+  height 100%
+  padding 1em 0
+  background-color #073642
+
+.main-wrapper
+  background-color #002b36
+  display block
+  border 1px solid #586e75
+  padding 0 1em
+  max-width 95%
+  margin 0 auto
+  height 100%
+
+  header
+    text-align center
+
+.editor-wrapper
+  margin 0 auto
+  padding 0 1em
+  text-align center
+  width 100%
+  border 0
+
+  .editor
+    float left
+    width 50%
+    border 0
+    padding 0.5em
+    display inline-block
+
+    .actions
+      text-align left
+      min-height 1.5em
+      button.clear-input
+        position absolute
+        right 0
+
+  textarea
+    margin-top 1em
+    width 100%
+    min-height 25em

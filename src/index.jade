@@ -1,5 +1,5 @@
 doctype
-html.no-js
+html.no-js(lang='en')
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
@@ -7,9 +7,12 @@ html.no-js
     meta(name='description', content='Web interface to preview your normalized package.json or metadata using normalize-package-data')
     meta(name='keywords', content='web, interface, packge.json, previewer, normalizer')
     meta(name='viewport', content='width=device-width, initial-scale=1')
+
     link(rel='apple-touch-icon', href='apple-touch-icon.png')
     link(rel='icon', href='images/favicon.ico')
-    link(rel='stylesheet', href='stylesheets/main.css')
+    link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=PT+Serif:400,700')
+
+    link(rel='stylesheet', href='stylesheets/style.css')
     script(src='scripts/app.js')
   body
     <!--[if lt IE 8]>
@@ -19,16 +22,20 @@ html.no-js
       | to improve your experience.
     <![endif]-->
 
-    header
-      h1 Package.json Normalize Previewer
-      p See your transformed package.json
-
-    .actions
-      button.load-sample(type='button') Load Sample Package.json
-      button.clear-input(type='button') Clear Input
-    .editor-wrapper
-      textarea.input(cols=100, rows=40)
-      textarea.output(cols=100, rows=40)
+    .main-wrapper
+      header
+        h1 Package.json Normalize Previewer
+        h3 See your transformed package.json
+      section.editor-wrapper
+        .left-side.editor
+          .actions
+            button.load-file(type='button', title='load a json file representing your pacakge.json metadata') Load from file
+            button.load-sample(type='button', title='Load a pre-configured sample pacakge.json') Load sample package.json
+            button.clear-input(type='button', title='Clear the input and output texts') Clear
+          textarea.input
+        .right-side.editor
+          .actions
+          textarea.output
 
     //- Google Analytics: change UA-XXXXX-X to be your site's ID.
     //-

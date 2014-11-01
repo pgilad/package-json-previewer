@@ -1,26 +1,38 @@
-normalize = require 'normalize-package-data'
-domready = require 'domready'
-debounce = require 'lodash.debounce'
-fixture = require '../../package.json'
+normalize = require "normalize-package-data"
+domready = require "domready"
+debounce = require "lodash.debounce"
+clone = require "lodash.clone"
+fixture = require "../../package.json"
 
-outputConverted = (data, elm) ->
-  elm.value = JSON.stringify(data, null, 2)
+prettyJSON = (json) ->
+  JSON.stringify json, null, 2
 
 domready ->
-  elmInput = document.querySelector 'textarea.input'
-  elmOutput = document.querySelector('textarea.output')
+  elmInput = document.querySelector "textarea.input"
+  elmOutput = document.querySelector "textarea.output"
+  btnLoadSample = document.querySelector "button.load-sample"
+  btnClearInput = document.querySelector "button.clear-input"
 
   onInputChange = debounce (e) ->
-    value = e.target.value
-    value = JSON.stringify fixture
-
+    return onClearInput() unless e.target.value.trim()
     try
-      data = JSON.parse value
+      data = JSON.parse e.target.value
       normalize data
-    catch error
-      return console.warn error
+    catch err
+      return elmOutput.value = "Error parsing or normalizing #{err}"
+    elmOutput.value = prettyJSON data
+  , 100
 
-    outputConverted data, elmOutput
-  , 200
+  onClearInput = ->
+    elmInput.value = elmOutput.value = ""
 
+  onLoadSample = ->
+    # get a clone of fixture as to not to mutate it
+    data = clone fixture
+    normalize data
+    elmInput.value = prettyJSON fixture
+    elmOutput.value = prettyJSON data
+
+  btnLoadSample.onclick = onLoadSample
+  btnClearInput.onclick = onClearInput
   elmInput.oninput = onInputChange
