@@ -3,26 +3,32 @@ html.no-js
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    title Package.json Normalize Previewer
+    title Package.json Previewer
     meta(name='description', content='Web interface to preview your normalized package.json or metadata using normalize-package-data')
     meta(name='keywords', content='web, interface, packge.json, previewer, normalizer')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    link(rel="stylesheet", href="stylesheets/main.css")
-    script(src="scripts/app.js")
+    link(rel='apple-touch-icon', href='apple-touch-icon.png')
+    link(rel='icon', href='images/favicon.ico')
+    link(rel='stylesheet', href='stylesheets/main.css')
+    script(src='scripts/app.js')
   body
     <!--[if lt IE 8]>
     p.browsehappy
       | You are using an <strong>outdated</strong> browser.
-      | Please <a href="http://browsehappy.com/">upgrade your browser</a>
+      | Please <a href='http://browsehappy.com/'>upgrade your browser</a>
       | to improve your experience.
     <![endif]-->
 
     header
-      h1 Web interface to preview your normalized package.json or metadata using normalize-package-data
+      h1 Package.json Normalize Previewer
+      p See your transformed package.json
 
+    .actions
+      button.load-sample(type='button') Load Sample Package.json
+      button.clear-input(type='button') Clear Input
     .editor-wrapper
-      textarea(cols=80, rows=40)
-      textarea(cols=80, rows=40)
+      textarea.input(cols=100, rows=40)
+      textarea.output(cols=100, rows=40)
 
     //- Google Analytics: change UA-XXXXX-X to be your site's ID.
     //-
