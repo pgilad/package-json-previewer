@@ -13,21 +13,24 @@ app = express()
 
 gulp.task 'styles', ->
   gulp.src './src/stylesheets/*.styl'
-  .pipe $.plumber()
+  .on 'error', handleError
   .pipe $.stylus()
   .pipe gulp.dest 'dist/stylesheets'
   .pipe $.livereload server
+
+handleError = (error) ->
+  $.util.log 'Gulp error', error.message
+  @emit 'end'
 
 gulp.task 'scripts', ->
   browserify
     entries: ['./src/scripts/main.coffee']
     extensions: ['.coffee', '.js']
   .transform 'coffeeify'
-  .bundle()
-  .pipe $.plumber()
-  .pipe source 'main.js'
+  .bundle().on 'error', handleError
+  .pipe source 'app.js'
   .pipe $.streamify $.uglify()
-  .pipe gulp.dest 'dist/scripts'
+  .pipe gulp.dest './dist/scripts'
   .pipe $.livereload server
 
 gulp.task 'images', ->
@@ -36,9 +39,9 @@ gulp.task 'images', ->
 
 gulp.task 'templates', ->
   gulp.src 'src/*.jade'
-  .pipe $.plumber()
+  .on 'error', handleError
   .pipe $.jade pretty: true
-  .pipe gulp.dest 'dist/'
+  .pipe gulp.dest './dist'
   .pipe $.livereload server
 
 gulp.task 'static-server', ->
@@ -48,8 +51,8 @@ gulp.task 'static-server', ->
 
 gulp.task 'watch', ->
   server.listen 35729, (err) ->
-    if err then return console.log err
-    gulp.watch 'src/stylesheets/*.scss', ['styles']
+    if err then return $.util.log err
+    gulp.watch 'src/stylesheets/*.styl', ['styles']
     gulp.watch 'src/scripts/*.coffee', ['scripts']
     gulp.watch 'src/*.jade', ['templates']
 

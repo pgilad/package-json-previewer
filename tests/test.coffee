@@ -14,13 +14,13 @@ describe 'Package.json Previewer', ->
   before (done) ->
     @server = app.use(serveStatic(DIST_DIR)).listen PORT, done
 
+  before (done) ->
+    @browser = new Browser(site: 'http://localhost:' + PORT)
+    @browser.visit '/', done
+
   after (done) ->
     @browser.close()
     @server.close(done)
-
-  it 'should visit the initial page', (done) ->
-    @browser = new Browser(site: 'http://localhost:' + PORT)
-    @browser.visit '/', done
 
   it 'should make sure head exists', ->
     expect(@browser.success).to.be.ok()
