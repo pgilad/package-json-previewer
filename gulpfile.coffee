@@ -23,6 +23,8 @@ gulp.task 'styles', ->
   external = gulp.src './src/stylesheets/solarized-dark.min.css'
   mergeStream stylus, external
   .pipe $.concat 'style.css'
+  .pipe $.autoprefixer 'last 2 versions'
+  .pipe $.minifyCss()
   .pipe gulp.dest 'dist/stylesheets'
   .pipe $.livereload server
 
@@ -55,7 +57,7 @@ gulp.task 'templates', ->
 gulp.task 'static-server', ->
   app.use express.static path.resolve './dist'
   app.listen APP_PORT
-  $.util.log 'Listening on port: #{APP_PORT}'
+  $.util.log "Listening on port: #{APP_PORT}"
 
 gulp.task 'watch', ->
   server.listen 35729, (err) ->
@@ -63,7 +65,6 @@ gulp.task 'watch', ->
     gulp.watch 'src/stylesheets/**/*.styl', ['styles']
     gulp.watch 'src/scripts/**/*.coffee', ['scripts']
     gulp.watch 'src/**/*.jade', ['templates']
-
 
 gulp.task 'build', [
   'scripts'
