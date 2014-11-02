@@ -13,14 +13,7 @@
         "test": "mocha --compilers coffee:coffee-script/register tests/test.coffee -R spec",
         "watchTest": "mocha --compilers coffee:coffee-script/register tests/test.coffee -R spec -watch"
     },
-    "keywords": [
-        "coffee",
-        "npm",
-        "previewer",
-        "normalize",
-        "website",
-        "transform"
-    ],
+    "keywords": "coffee, npm, previewer, normalize, website, transform",
     "devDependencies": {
         "browserify": "^6.2.0",
         "coffee-script": "^1.8.0",
