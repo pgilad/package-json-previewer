@@ -21,21 +21,38 @@ html.no-js(lang='en')
       | Please <a href='http://browsehappy.com/'>upgrade your browser</a>
       | to improve your experience.
     <![endif]-->
+    a.github-ribbon(href='https://github.com/pgilad/package-json-previewer')
+      img(style='position: fixed; top: 0; right: 0; border: 0; z-index:50', src='https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67', alt='Fork me on GitHub', data-canonical-src='https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png')
+    .container
+      .jumbotron
+        h1 Package.json Previewer
+        a.twitter-share-button(href='https://twitter.com/share' data-text="Preview your normalized package.json metadata @npmjs" data-via="GiladPeleg") Tweet
+        p See how NPM will normalize your package.json data.
+        p Check out the normalization rules at:&nbsp;
+          a(href='https://github.com/npm/normalize-package-data#what-normalization-currently-entails') normalize-package-data
+        p Need help? Check out the&nbsp;
+          a(href='https://github.com/pgilad/package-json-previewer') instructions and source
 
-    .main-wrapper
-      header
-        h1 Package.json Normalize Previewer
-        h3 See your transformed package.json
-      section.editor-wrapper
-        .left-side.editor
+    .container-fluid.editor-wrapper
+      .row
+        .col-xs-6
           .actions
-            button.load-file(type='file', title='load a json file representing your pacakge.json metadata') Load from file
-            button.load-sample(type='button', title='Load a pre-configured sample pacakge.json') Load sample package.json
-            button.clear-input(type='button', title='Clear the input and output texts') Clear
+            .row
+              .col-xs-4
+                h5 Paste your data:
+              .col-xs-8
+                button.btn.btn-default.btn-sm.load-file(type='file', title='load a json file representing your pacakge.json metadata') Load from file
+                button.btn.btn-success.btn-sm.load-sample(type='button', title='Load a pre-configured sample pacakge.json') Load Sample
+                button.btn.btn-warning.btn-sm.clear-input(type='button', title='Clear the input and output texts') Clear
           #input-editor.area
-        .right-side.editor
+        .col-xs-6
           .actions
+            h5 Normalized Metadata:
           #output-editor.area
+
+    footer
+      p MIT license @
+        a(href='http://giladpeleg.com') Gilad Peleg
 
     //- Google Analytics: change UA-XXXXX-X to be your site's ID.
     //-
@@ -46,3 +63,7 @@ html.no-js(lang='en')
         //- e.src='//www.google-analytics.com/analytics.js';
         //- r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
         //- ga('create','UA-XXXXX-X');ga('send','pageview');
+
+
+    script.
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>

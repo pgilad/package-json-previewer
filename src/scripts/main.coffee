@@ -6,7 +6,6 @@ fixture = require '../fixtures/_package.json'
 ace = require 'brace'
 require 'brace/mode/json'
 require 'brace/theme/monokai'
-
 INPUT_DEBOUNCE_TIME = 100
 
 prettyJSON = (json) -> JSON.stringify json, null, 2
@@ -17,6 +16,7 @@ initAce = (elm) ->
   editor.setTheme 'ace/theme/monokai'
   editor
 
+# similiar to jquery document.ready
 domready ->
   btnLoadSample = document.querySelector 'button.load-sample'
   btnClearInput = document.querySelector 'button.clear-input'
