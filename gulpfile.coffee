@@ -20,7 +20,7 @@ handleError = (error) ->
 gulp.task 'styles', ->
   stylus = gulp.src './src/stylesheets/*.styl'
     .pipe $.stylus().on 'error', handleError
-  external = gulp.src './src/stylesheets/bootstrap.custom.min.css'
+  external = gulp.src './node_modules/bootswatch/flatly/bootstrap.min.css'
   mergeStream external, stylus
   .pipe $.concat 'style.css'
   .pipe $.autoprefixer 'last 2 versions'

@@ -1,7 +1,7 @@
 {
     "name": "package-json-previewer",
     "version": "0.1.0",
-    "description": "Web interface to preview your normalized package.json",
+    "description": "Preview your normalized package.json",
     "repository": "pgilad/package-json-previewer",
     "license": "MIT",
     "author": "Gilad Peleg <giladp007@gmail.com> (http://giladpeleg.com)",
