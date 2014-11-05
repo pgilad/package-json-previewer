@@ -1,17 +1,12 @@
 'use strict'
 path = require 'path'
 gulp = require 'gulp'
-APP_PORT = 1337
-
-# this is an arbitrary object that loads all gulp plugins in package.json.
-$ = require('gulp-load-plugins')()
 browserify = require 'browserify'
-express = require 'express'
 source = require 'vinyl-source-stream'
 mergeStream = require 'merge-stream'
-tiny = require 'tiny-lr'
-server = tiny()
-app = express()
+$ = require('gulp-load-plugins')()
+
+APP_PORT = 1337
 
 handleError = (error) ->
   $.util.log 'Gulp error', error.message
@@ -25,8 +20,10 @@ gulp.task 'styles', ->
   .pipe $.concat 'style.css'
   .pipe $.autoprefixer 'last 2 versions'
   .pipe $.minifyCss()
+  .pipe $.uncss({
+    html: ['./dist/index.html', './dist/404.html']
+  })
   .pipe gulp.dest 'dist/stylesheets'
-  .pipe $.livereload server
 
 gulp.task 'scripts', ->
   browserify
@@ -37,7 +34,6 @@ gulp.task 'scripts', ->
   .pipe source 'app.js'
   .pipe $.streamify $.uglify()
   .pipe gulp.dest './dist/scripts'
-  .pipe $.livereload server
 
 gulp.task 'copy', ->
   gulp.src './src/*.xml'
@@ -52,19 +48,36 @@ gulp.task 'templates', ->
   .pipe $.jade pretty: true
   .on 'error', handleError
   .pipe gulp.dest './dist'
-  .pipe $.livereload server
 
-gulp.task 'static-server', ->
-  app.use express.static path.resolve './dist'
-  app.listen APP_PORT
-  $.util.log "Listening on port: #{APP_PORT}"
+# Connect
+gulp.task 'connect', ->
+  $.connect.server
+    root: 'dist'
+    port: APP_PORT
+    livereload: true
 
-gulp.task 'watch', ->
-  server.listen 35729, (err) ->
-    if err then throw Error err
-    gulp.watch 'src/stylesheets/**/*.styl', ['styles']
-    gulp.watch 'src/scripts/**/*.coffee', ['scripts']
-    gulp.watch 'src/**/*.jade', ['templates']
+gulp.task 'watch', ['connect'], ->
+  gulp.watch 'src/**/*', read:false, (event) ->
+    ext = path.extname event.path
+    taskname = null
+    reloadasset = null
+    switch ext
+      when '.jade'
+        taskname = 'templates'
+        reloadasset = 'dist/**/*.html'
+      when '.sass'
+        taskname = 'styles'
+        reloadasset = 'dist/**/*.css'
+      when '.coffee', '.js'
+        taskname = 'scripts'
+        reloadasset = 'dist/**/*.js'
+      else
+        taskname = 'images'
+        reloadasset = "dist/**/*#{path.basename event.path}"
+    gulp.task 'reload', [taskname], ->
+      gulp.src reloadasset
+        .pipe $.connect.reload()
+    gulp.start 'reload'
 
 gulp.task 'build', [
   'scripts'
@@ -76,6 +89,5 @@ gulp.task 'build', [
 
 gulp.task 'default', [
   'build'
-  'static-server'
   'watch'
 ]
