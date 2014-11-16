@@ -1,4 +1,68 @@
-@import url(//fonts.googleapis.com/css?family=Lato:400,700,400italic);
+* {
+  position: relative;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.jumbotron {
+  padding-top: 1em!important;
+  padding-bottom: 1em!important;
+}
+
+.copyright {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+
+.editor-wrapper {
+  position: relative;
+  display: block;
+  padding-bottom: .5em;
+}
+
+.editor-wrapper .actions {
+  vertical-align: middle;
+  text-align: left;
+}
+
+.editor-wrapper .actions button.clear-input {
+  float: right;
+}
+
+.editor-wrapper .area {
+  min-height: 500px;
+  padding: .5em;
+  border-radius: .3em;
+}
 
 /*!
  * bootswatch v3.3.0
@@ -11,6 +75,7 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 
 html {
+  font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -115,8 +180,10 @@ html {
 }
 
 body {
+  font-family: Lato,"Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 15px;
   line-height: 1.42857143;
+  color: #2c3e50;
   background-color: #fff;
 }
 
@@ -456,80 +523,4 @@ input {
 
 input:focus {
   box-shadow: none;
-}
-
-* {
-  box-sizing: border-box;
-  position: relative;
-}
-
-body,
-button,
-h1,
-h5,
-html {
-  font-family: 'PT Serif',serif;
-}
-
-html {
-  height: 100%;
-  width: 100%;
-}
-
-body {
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  color: #ccc;
-}
-
-.jumbotron {
-  padding-top: 1em!important;
-  padding-bottom: 1em!important;
-}
-
-.copyright {
-  position: absolute;
-  bottom: 1em;
-  right: 1em;
-}
-
-.btn-file {
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-file input[type=file] {
-  position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 100%;
-  min-height: 100%;
-  font-size: 100px;
-  text-align: right;
-  opacity: 0;
-  background: red;
-  cursor: inherit;
-  display: block;
-}
-
-.editor-wrapper {
-  position: relative;
-  display: block;
-  padding-bottom: .5em;
-}
-
-.editor-wrapper .actions {
-  vertical-align: middle;
-  text-align: left;
-}
-
-.editor-wrapper .actions button.clear-input {
-  float: right;
-}
-
-.editor-wrapper .area {
-  min-height: 500px;
-  padding: .5em;
-  border-radius: .3em;
 }
