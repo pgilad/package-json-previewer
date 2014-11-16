@@ -24,6 +24,7 @@ $ npm install
 $ gulp
 
 # open browser in localhost:1337
+```
 
 ## Test
 
