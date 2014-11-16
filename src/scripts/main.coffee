@@ -4,6 +4,8 @@ debounce = require 'lodash.debounce'
 clone = require 'lodash.clone'
 fixture = require '../fixtures/_package.json'
 twitter = require './twitter'
+# only load analytics code in non-localhost env
+analytics = require './analytics' unless window.location.hostname is 'localhost'
 ace = require 'brace'
 require 'brace/mode/json'
 require 'brace/theme/monokai'
