@@ -7,6 +7,8 @@ NPM transforms your `package.json` using a module named [normalize-package-data]
 
 This previewer will let you quickly see how your file will be transformed.
 
+![package.json previewer](media.png)
+
 ## Install
 
 ```sh
