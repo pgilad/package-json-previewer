@@ -88,7 +88,7 @@ gulp.task 'watch', ['connect'], ->
 gulp.task 'gh-pages', ['build'], ->
   gulp.src './dist/**/*'
   .pipe $.ghPages
-    push: false
+    push: true
 
 gulp.task 'default', [
   'build'
