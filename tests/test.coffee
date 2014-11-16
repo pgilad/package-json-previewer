@@ -1,6 +1,6 @@
 # force the test environment to 'test'
 process.env.NODE_ENV = 'test'
-PORT = process.env.PORT or 8002
+PORT = process.env.PORT or 8888
 DIST_DIR = './dist'
 
 # get the application server module
@@ -11,6 +11,9 @@ Browser = require 'zombie'
 expect = require 'expect.js'
 Browser.localhost 'localhost', PORT
 browser = Browser.create()
+browser.resources.mock '//platform.twitter.com/widgets.js', {
+  statusCode: 200
+}
 
 describe 'Package.json Previewer', ->
   before (done) ->
@@ -35,5 +38,7 @@ describe 'Package.json Previewer', ->
     browser.assert.elements '#output-editor'
 
   it 'click on load sample', (done) ->
+    @timeout 10000
+    browser.assert.elements 'button.load-sample'
     browser.pressButton 'button.load-sample', ->
       done()

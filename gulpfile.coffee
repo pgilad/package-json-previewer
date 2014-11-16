@@ -4,7 +4,9 @@ gulp = require 'gulp'
 browserify = require 'browserify'
 source = require 'vinyl-source-stream'
 mergeStream = require 'merge-stream'
+buffer = require 'vinyl-buffer'
 $ = require('gulp-load-plugins')()
+bundleMap = './dist/scripts/app.js.map'
 
 APP_PORT = 1337
 
@@ -29,10 +31,14 @@ gulp.task 'scripts', ->
   browserify
     entries: ['./src/scripts/main.coffee']
     extensions: ['.coffee', '.js']
+    debug: true
   .transform 'coffeeify'
   .bundle().on 'error', handleError
   .pipe source 'app.js'
-  .pipe $.streamify $.uglify()
+  .pipe buffer()
+  .pipe $.sourcemaps.init loadMaps: true
+  .pipe $.uglify()
+  .pipe $.sourcemaps.write './'
   .pipe gulp.dest './dist/scripts'
 
 gulp.task 'copy', ->
@@ -65,7 +71,7 @@ gulp.task 'watch', ['connect'], ->
       when '.jade'
         taskname = 'templates'
         reloadasset = 'dist/**/*.html'
-      when '.sass'
+      when '.styl', '.css'
         taskname = 'styles'
         reloadasset = 'dist/**/*.css'
       when '.coffee', '.js'
@@ -79,6 +85,16 @@ gulp.task 'watch', ['connect'], ->
         .pipe $.connect.reload()
     gulp.start 'reload'
 
+gulp.task 'gh-pages', ['build'], ->
+  gulp.src './dist/**/*'
+  .pipe $.ghPages
+    push: false
+
+gulp.task 'default', [
+  'build'
+  'watch'
+]
+
 gulp.task 'build', [
   'scripts'
   'styles'
@@ -87,7 +103,7 @@ gulp.task 'build', [
   'copy'
 ]
 
-gulp.task 'default', [
-  'build'
-  'watch'
+gulp.task 'deploy', [
+  'build',
+  'gh-pages'
 ]

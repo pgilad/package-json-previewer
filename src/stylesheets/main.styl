@@ -23,14 +23,31 @@ body
 header
   padding 1em
 
-footer
+.copyright
   position absolute
-  bottom 0
-  padding 1em
+  bottom 1em
+  right 1em
+
+.btn-file
+  position relative
+  overflow hidden
+  input[type=file]
+    position absolute
+    top 0
+    right 0
+    min-width 100%
+    min-height 100%
+    font-size 100px
+    text-align right
+    opacity 0
+    background red
+    cursor inherit
+    display block
 
 .editor-wrapper
   position relative
   display block
+  padding-bottom 0.5em
 
   .actions
     vertical-align middle

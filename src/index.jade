@@ -7,6 +7,7 @@ html.no-js(lang='en')
     meta(name='description', content='Web interface to preview your normalized package.json or metadata using normalize-package-data')
     meta(name='keywords', content='web, interface, packge.json, previewer, normalizer')
     meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='author', content='Gilad Peleg')
 
     link(rel='apple-touch-icon', href='apple-touch-icon.png')
     link(rel='icon', href='images/favicon.ico')
@@ -32,6 +33,9 @@ html.no-js(lang='en')
           a(href='https://github.com/npm/normalize-package-data#what-normalization-currently-entails') normalize-package-data
         p Need help? Check out the&nbsp;
           a(href='https://github.com/pgilad/package-json-previewer') instructions and source
+        .copyright
+          em MIT license @
+            a(href='http://giladpeleg.com') Gilad Peleg
 
     .container-fluid.editor-wrapper
       .row
@@ -41,8 +45,10 @@ html.no-js(lang='en')
               .col-xs-4
                 h5 Paste your data:
               .col-xs-8
-                button.btn.btn-default.btn-sm.load-file(type='file', title='load a json file representing your pacakge.json metadata') Load from file
-                button.btn.btn-success.btn-sm.load-sample(type='button', title='Load a pre-configured sample pacakge.json') Load Sample
+                span.file-input.btn.btn-default.btn-sm.btn-file(title='load a json file representing your package.json metadata')
+                  | Load a file
+                  input.load-file(type='file')
+                button.btn.btn-success.btn-sm.load-sample(type='button', title='Load a pre-configured sample package.json') Load Sample
                 button.btn.btn-warning.btn-sm.clear-input(type='button', title='Clear the input and output texts') Clear
           #input-editor.area
         .col-xs-6
@@ -50,12 +56,6 @@ html.no-js(lang='en')
             h5 Normalized Metadata:
           #output-editor.area
 
-    footer
-      p MIT license @
-        a(href='http://giladpeleg.com') Gilad Peleg
-
-    //- Google Analytics: change UA-XXXXX-X to be your site's ID.
-    //-
       //- script
         //- (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
         //- function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
@@ -63,7 +63,3 @@ html.no-js(lang='en')
         //- e.src='//www.google-analytics.com/analytics.js';
         //- r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
         //- ga('create','UA-XXXXX-X');ga('send','pageview');
-
-
-    script.
-      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>

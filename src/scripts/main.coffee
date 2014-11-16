@@ -3,6 +3,7 @@ domready = require 'domready'
 debounce = require 'lodash.debounce'
 clone = require 'lodash.clone'
 fixture = require '../fixtures/_package.json'
+twitter = require './twitter'
 ace = require 'brace'
 require 'brace/mode/json'
 require 'brace/theme/monokai'
@@ -10,8 +11,9 @@ INPUT_DEBOUNCE_TIME = 100
 
 prettyJSON = (json) -> JSON.stringify json, null, 2
 
-initAce = (elm) ->
+initAce = (elm, useWorker=true) ->
   editor = ace.edit elm
+  editor.getSession().setUseWorker useWorker
   editor.getSession().setMode 'ace/mode/json'
   editor.setTheme 'ace/theme/monokai'
   editor
@@ -19,11 +21,21 @@ initAce = (elm) ->
 # similiar to jquery document.ready
 domready ->
   btnLoadSample = document.querySelector 'button.load-sample'
+  fileInput = document.querySelector 'input.load-file'
   btnClearInput = document.querySelector 'button.clear-input'
 
   inputEditor = initAce 'input-editor'
-  outputEditor = initAce 'output-editor'
-  outputEditor.getSession().setUseWorker false
+  outputEditor = initAce 'output-editor', false
+
+  reader = new FileReader()
+
+  reader.onload = () ->
+    inputEditor.setValue reader.result
+
+  onLoadFile = () ->
+    file = fileInput.files[0]
+    reader.readAsText file
+    fileInput.value = ''
 
   onInputClear = ->
     inputEditor.setValue ''
@@ -48,4 +60,5 @@ domready ->
   # set event handlers
   btnLoadSample.onclick = onLoadSample
   btnClearInput.onclick = onInputClear
+  fileInput.onchange = onLoadFile
   inputEditor.on 'change', onInputChange
