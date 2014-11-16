@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Package.json Previewer</title>
+    <meta name="description" content="Web interface to preview your normalized package.json or metadata using normalize-package-data">
+    <meta name="keywords" content="web, interface, packge.json, previewer, normalizer">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Gilad Peleg">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Serif:400,700">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="scripts/app.js"></script>
+  </head>
+  <body><!--[if lt IE 8]>
+    <p class="browsehappy">
+      You are using an <strong>outdated</strong> browser.
+      Please <a href='http://browsehappy.com/'>upgrade your browser</a>
+      to improve your experience.
+    </p><![endif]--><a href="https://github.com/pgilad/package-json-previewer" class="github-ribbon"><img style="position: fixed; top: 0; right: 0; border: 0; z-index:50" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Package.json Previewer</h1><a href="https://twitter.com/share" data-text="Preview your normalized package.json metadata @npmjs" data-via="GiladPeleg" class="twitter-share-button">Tweet</a>
+        <p>See how NPM will normalize your package.json data.</p>
+        <p>Check out the normalization rules at:&nbsp;<a href="https://github.com/npm/normalize-package-data#what-normalization-currently-entails">normalize-package-data</a></p>
+        <p>Need help? Check out the&nbsp;<a href="https://github.com/pgilad/package-json-previewer">instructions and source</a></p>
+        <div class="copyright"><em>MIT license @<a href="http://giladpeleg.com">Gilad Peleg</a></em></div>
+      </div>
+    </div>
+    <div class="container-fluid editor-wrapper">
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="actions">
+            <div class="row">
+              <div class="col-xs-4">
+                <h5>Paste your data:</h5>
+              </div>
+              <div class="col-xs-8"><span title="load a json file representing your package.json metadata" class="file-input btn btn-default btn-sm btn-file">Load a file
+                  <input type="file" class="load-file"></span>
+                <button type="button" title="Load a pre-configured sample package.json" class="btn btn-success btn-sm load-sample">Load Sample</button>
+                <button type="button" title="Clear the input and output texts" class="btn btn-warning btn-sm clear-input">Clear</button>
+              </div>
+            </div>
+          </div>
+          <div id="input-editor" class="area"></div>
+        </div>
+        <div class="col-xs-6">
+          <div class="actions">
+            <h5>Normalized Metadata:</h5>
+          </div>
+          <div id="output-editor" class="area"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
