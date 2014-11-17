@@ -19,19 +19,30 @@ Check out the [live site](https://pgilad.github.io/package-json-previewer/)
 $ git clone https://github.com/pgilad/package-json-previewer
 
 # change to cloned directory
+$ cd package-json-previewer
+
+# install dependencies
 $ npm install
 ```
 
 ## Usage
 
-```js
-# compile everything into ./dist and run server
+```sh
+# build, watch & run server with live-reload
 $ gulp
 
-# open browser in localhost:1337
+# just compile
+$ gulp build
+
+$ launch server with live reload
+$ gulp connect
+
+# open browser at localhost:1337
 ```
 
 ## Test
+
+Test using Mocha/Zombie.js/Coffee:
 
 ```sh
 $ npm test

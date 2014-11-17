@@ -55,13 +55,6 @@ gulp.task 'templates', ->
   .on 'error', handleError
   .pipe gulp.dest './dist'
 
-# Connect
-gulp.task 'connect', ->
-  $.connect.server
-    root: 'dist'
-    port: APP_PORT
-    livereload: true
-
 gulp.task 'watch', ['connect'], ->
   gulp.watch 'src/**/*', read:false, (event) ->
     ext = path.extname event.path
@@ -89,6 +82,13 @@ gulp.task 'gh-pages', ['build'], ->
   gulp.src './dist/**/*'
   .pipe $.ghPages
     push: true
+
+# Connect
+gulp.task 'connect', ->
+  $.connect.server
+    root: 'dist'
+    port: APP_PORT
+    livereload: true
 
 gulp.task 'default', [
   'build'
