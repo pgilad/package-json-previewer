@@ -34,7 +34,7 @@ $ gulp
 # just compile
 $ gulp build
 
-$ launch server with live reload
+# launch server with live reload
 $ gulp connect
 
 # open browser at localhost:1337
