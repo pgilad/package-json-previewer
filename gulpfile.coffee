@@ -1,4 +1,3 @@
-'use strict'
 path = require 'path'
 gulp = require 'gulp'
 browserify = require 'browserify'

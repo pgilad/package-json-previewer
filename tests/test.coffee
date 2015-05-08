@@ -28,7 +28,6 @@ describe 'Package.json Previewer', ->
   it 'should make sure head exists', (done) ->
     @timeout 10000
     browser.visit '/', (error) ->
-      expect(error).to.not.be.ok()
       expect(browser.success).to.be.ok()
       expect(browser.query 'head').to.be.ok()
       done()
