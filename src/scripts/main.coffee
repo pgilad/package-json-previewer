@@ -17,6 +17,7 @@ initAce = (elm, useWorker=true) ->
   editor.getSession().setUseWorker useWorker
   editor.getSession().setMode 'ace/mode/json'
   editor.setTheme 'ace/theme/monokai'
+  editor.$blockScrolling = Infinity
   editor
 
 # similiar to jquery document.ready

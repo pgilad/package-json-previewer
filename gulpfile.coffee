@@ -20,7 +20,8 @@ gulp.task 'styles', ->
   mergeStream external, stylus
   .pipe $.concat 'style.css'
   .pipe $.autoprefixer 'last 2 versions'
-  .pipe $.minifyCss()
+  .pipe $.minifyCss
+    processImport: false
   .pipe $.uncss({
     html: ['./dist/index.html', './dist/404.html']
   })
